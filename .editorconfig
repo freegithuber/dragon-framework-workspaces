@@ -1,0 +1,134 @@
+########################################################################################################################
+# 配置参数说明：https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties
+########################################################################################################################
+
+# Must be specified in the preamble.
+# Set to true to stop the .editorconfig file search on the current file.
+# The value is case insensitive.
+# root = true
+
+# Set to tab or space to use hard tabs or soft tabs respectively.
+# The values are case insensitive.
+# indent_style = space
+
+# Set to a whole number defining the number of columns used for each indentation level and the width of soft tabs (when supported).
+# If this equals tab, the indent_size shall be set to the tab size, which should be tab_width (if specified);
+# else, the tab size set by the editor. The values are case insensitive.
+# indent_size = 4
+
+# Set to a whole number defining the number of columns used to represent a tab character.
+# This defaults to the value of indent_size and should not usually need to be specified.
+# tab_width = 4
+
+# Set to lf, cr, or crlf to control how line breaks are represented.
+# The values are case insensitive.
+# end_of_line = lf
+
+# Set to latin1, utf-8, utf-8-bom, utf-16be or utf-16le to control the character set.
+# Use of utf-8-bom is discouraged.
+# charset = utf-8
+
+# Set to true to remove all whitespace characters preceding newline characters in the file and false to ensure it doesn’t.
+# trim_trailing_whitespace = true
+
+# Set to true ensure file ends with a newline when saving and false to ensure it doesn’t.
+# insert_final_newline = true
+
+# Forces hard line wrapping after the amount of characters specified. off to turn off this feature (use the editor settings).
+# max_line_length = 120
+
+# Denotes preferred quoting style for string literals (for languages that support multiple quote styles)
+# quote_type = auto
+
+# Denotes the include paths of header files for some languages. Could be used by syntax checkers and compilers inside editors.
+# c_include_path =
+
+# Denotes the CLASSPATH used by the Java source files. Could be used by some Java syntax checkers and compilers inside editors.
+# java_class_path =
+
+# Denotes whether the left part of the curly bracket should be on the next line or not
+# curly_bracket_next_line = true
+
+# Denotes whether spaces should be present around arithmetic and boolean operators
+# spaces_around_operators = true
+
+# Denotes how spaces should be around brackets and parentheses:
+# no space (none), only inside the brackets (inside), only outside the brackets (outside), or at the both side of brackets (both)
+# spaces_around_brackets = none
+
+# Denotes the style for using curly braces in code blocks. K&R, Allman, GNU, Horstmann, etc.
+#
+#     格式：K&R
+#     if (<cond>) {
+#         <body>
+#     }
+#
+#     格式：BSD, Allman
+#     if (<cond>)
+#     {
+#         <body>
+#     }
+#
+#     格式：GNU
+#     if (<cond>)
+#       {
+#         <body>
+#       }
+#
+#     格式：Horstmann
+#     if (<cond>)
+#     {  <body>
+#     }
+#
+# indent_brace_style = K&R
+
+# Denotes the number of imports required before multiple imports are automatically collapsed to a wildcard
+# (or a wildcard is automatically expanded to explicit imports)
+# wildcard_import_limit = 100
+
+# Denotes the continuation indent size. Useful to distinguish code blocks versus continuation lines
+# continuation_indent_size =
+
+# Denotes the block_comment or line_comment character to mark a block or each line as comment.
+# Some languages require # prepended on each line, others // or ;.
+# Some have specific block start markers and end markers such as /* and */ and <!-- and --!>
+# block_comment =
+# line_comment =
+# block_comment_start =
+# block_comment_end =
+
+########################################################################################################################
+# 配置参数开始
+########################################################################################################################
+
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+tab_width = 4
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+max_line_length = 120
+quote_type = auto
+curly_bracket_next_line = false
+spaces_around_operators = true
+spaces_around_brackets = none
+indent_brace_style = K&R
+
+[*.html]
+max_line_length = 150
+
+[*.{js,jsx,ts,tsx,vue,html,json,yml,yaml}]
+indent_size = 2
+
+[*.{js,jsx,ts,tsx}]
+quote_type = single
+
+[*.{html,css,sass,scss,less,json}]
+quote_type = double
+
+[package.json]
+indent_size = 2
