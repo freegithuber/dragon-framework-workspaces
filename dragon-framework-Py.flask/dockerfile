@@ -1,0 +1,53 @@
+#########################################################################################################################
+# docker build --tag dragon-framework-py_flask:1.0.0 --no-cache=true --file dockerfile .                                #
+# docker run -d --name dragon-framework-py_flask -e PORT=8080 -e WORKERS=8 -p 8080:8080 dragon-framework-py_flask:1.0.0 #
+# docker tag dragon-framework-py_flask:1.0.0 10.10.10.10:18080/freeimage/dragon-framework-py_flask:1.0.0                #
+# docker rmi dragon-framework-py_flask:1.0.0                                                                            #
+# docker rmi 10.10.10.10:18080/freeimage/dragon-framework-py_flask:1.0.0                                                #
+# docker push 10.10.10.10:18080/freeimage/dragon-framework-py_flask:1.0.0                                               #
+# docker pull 10.10.10.10:18080/freeimage/dragon-framework-py_flask:1.0.0                                               #
+# docker save -o dragon-framework-py_flask.1.0.0.tar.gz 10.10.10.10:18080/freeimage/dragon-framework-py_flask:1.0.0     #
+# docker load < dragon-framework-py_flask.1.0.0.tar.gz                                                                  #
+#########################################################################################################################
+
+FROM python:3.8.18-alpine3.18
+
+ENV PORT=8080 WORKERS=4
+
+EXPOSE ${PORT}
+
+WORKDIR /var/dragon-framework-Py_flask/web/
+
+ENV PYTHONPATH=..:$PYTHONPATH
+
+COPY static            /var/dragon-framework-Py_flask/static
+COPY templates         /var/dragon-framework-Py_flask/templates
+COPY web               /var/dragon-framework-Py_flask/web
+COPY requirements.txt  /var/dragon-framework-Py_flask/requirements.txt
+COPY version.txt         /var/dragon-framework-Py_django/version.txt
+
+RUN set -x \
+ && sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
+ && mkdir ~/.pip \
+ && echo '[global]' >> ~/.pip/pip.conf \
+ && echo 'cache-dir=/var/repositories/python/pip' >> ~/.pip/pip.conf \
+ && echo 'index-url=http://mirrors.aliyun.com/pypi/simple/' >> ~/.pip/pip.conf \
+ && echo '[install]' >> ~/.pip/pip.conf \
+ && echo 'trusted-host=mirrors.aliyun.com' >> ~/.pip/pip.conf
+
+RUN set -x \
+ && apk add --no-cache tzdata \
+ && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+ && rm -rf /opt/* /tmp/* /var/cache/apk/*
+
+RUN set -x \
+ && apk add --no-cache --virtual build-deps make gcc g++ \
+ && python -m pip install --upgrade pip==22.1.2 \
+ && pip install --upgrade setuptools==56.2.0 \
+ && pip install gunicorn==20.1.0 \
+ && cd /var/dragon-framework-Py_flask/ \
+ && pip install -r requirements.txt \
+ && apk del build-deps \
+ && rm -rf /opt/* /tmp/* /var/cache/apk/*
+
+CMD gunicorn --config gunicorn_config.py --workers ${WORKERS} --bind 0.0.0.0:${PORT} main:webapp

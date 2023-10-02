@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <title>Welcome to Flask!</title>
+    <script src="/static/jquery-3.6.4/jquery.js"></script>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div>返回结果：<span id="value"></span></div>
+</div>
+</body>
+</html>
+<script>
+    $.get('/index/data', function (res) {
+        $('#value').html(JSON.stringify(res));
+    });
+</script>
