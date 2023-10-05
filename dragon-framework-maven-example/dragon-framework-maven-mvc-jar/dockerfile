@@ -1,0 +1,13 @@
+FROM openjdk:8u265-jre-slim
+
+ENV JAVA_OPTS="-Xms128m -Xmx512m"
+
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
+COPY target/output-exec/dragon-framework-maven-mvc-jar-exec.jar /opt/dragon-framework-maven-mvc-jar-exec.jar
+
+EXPOSE 8080
+
+ENTRYPOINT ["/bin/sh", "-c", "exec java $JAVA_OPTS -jar /opt/dragon-framework-maven-mvc-jar-exec.jar \"$@\"", "--"]
+
+CMD ["--spring.profiles.active=alpha"]

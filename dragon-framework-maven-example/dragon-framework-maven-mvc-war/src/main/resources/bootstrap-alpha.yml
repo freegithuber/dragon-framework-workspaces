@@ -1,0 +1,21 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /dragon-framework
+
+spring:
+  application:
+    name: dragon-framework-maven-mvc-war
+
+# 刷新配置：curl -X POST http://127.0.0.1:8080/dragon-framework/actuator/refresh
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+dragonframework:
+  maven:
+    mvc-war:
+      authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMDAwMDAwMCIsInVzZXJuYW1lIjoi5bCP6IOW5a2QIn0.KDWyKluZPg2dBEAIemXmN7rtmbulzMJnwbyzX6AhacM
+      message: Hello World!!!
