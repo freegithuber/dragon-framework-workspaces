@@ -1,0 +1,27 @@
+pluginManagement {
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/spring' }
+        maven { url 'https://maven.aliyun.com/repository/spring-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/repository/releases' }
+        maven { url 'https://maven.aliyun.com/repository/snapshots' }
+        maven { url 'https://maven.aliyun.com/repository/apache-snapshots' }
+        maven { url 'https://maven.aliyun.com/repository/grails-core' }
+        maven { url 'https://maven.aliyun.com/repository/mapr-public' }
+        maven { url 'https://maven.aliyun.com/repository/staging-alpha-group' }
+        maven { url 'https://maven.aliyun.com/repository/staging-alpha' }
+        mavenLocal()
+    }
+}
+
+rootProject.name = 'dragon-framework-gradle-example'
+
+include 'dragon-framework-gradle-mvc-jar'
+
+include 'dragon-framework-gradle-mvc-war'
+
+include 'dragon-framework-gradle-webflux'
