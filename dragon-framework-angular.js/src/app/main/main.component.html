@@ -1,0 +1,71 @@
+<div class="main box">
+  <nz-carousel class="main-box" [nzAutoPlay]="true">
+    <div nz-carousel-content>
+      <div
+        echarts
+        [options]="echartsOption"
+        (chartInit)="echartsInit($event)"
+        (chartClick)="echartsClick($event)"
+        class="box"
+      ></div>
+    </div>
+    <div nz-carousel-content>
+      <div class="eui-button-box">
+        <!-- 普通按钮 -->
+        <div class="eui-row">
+          <span class="eui-button">
+            <span class="icon"></span>
+          </span>
+          <span class="eui-button" (click)="doLogout()">
+            <span class="icon"></span>
+          </span>
+          <span class="eui-button">
+            <span class="icon"></span>
+          </span>
+        </div>
+        <!-- 单选按钮 -->
+        <div class="eui-row">
+          <label class="eui-radio">
+            <input type="radio" name="radio_name"/>
+            <span class="radio">
+              <span class="icon"></span>
+            </span>
+          </label>
+          <label class="eui-radio">
+            <input type="radio" name="radio_name" checked/>
+            <span class="radio">
+              <span class="icon"></span>
+            </span>
+          </label>
+          <label class="eui-radio">
+            <input type="radio" name="radio_name"/>
+            <span class="radio">
+              <span class="icon"></span>
+            </span>
+          </label>
+        </div>
+        <!-- 复选按钮 -->
+        <div class="eui-row">
+          <label class="eui-checkbox">
+            <input type="checkbox" name="checkbox_name" checked/>
+            <span class="checkbox">
+              <span class="icon"></span>
+            </span>
+          </label>
+          <label class="eui-checkbox">
+            <input type="checkbox" name="checkbox_name"/>
+            <span class="checkbox">
+              <span class="icon"></span>
+            </span>
+          </label>
+          <label class="eui-checkbox">
+            <input type="checkbox" name="checkbox_name" checked/>
+            <span class="checkbox">
+              <span class="icon"></span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </nz-carousel>
+</div>
