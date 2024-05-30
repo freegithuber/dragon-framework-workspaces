@@ -24,7 +24,7 @@ COPY static            /var/dragon-framework-Py_flask/static
 COPY templates         /var/dragon-framework-Py_flask/templates
 COPY web               /var/dragon-framework-Py_flask/web
 COPY requirements.txt  /var/dragon-framework-Py_flask/requirements.txt
-COPY version.txt         /var/dragon-framework-Py_django/version.txt
+COPY version.txt       /var/dragon-framework-Py_flask/version.txt
 
 RUN set -x \
  && sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
